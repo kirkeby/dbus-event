@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os
 import logging
 from daemon import daemonize
 from glob import glob
@@ -7,10 +8,12 @@ import gobject
 import dbus
 from dbus.mainloop.glib import DBusGMainLoop
 
+here = os.path.dirname(__file__)
+
 def load_callbacks():
-    paths = glob('*/*/*.py')
+    paths = glob(os.path.join(here, '*', '*', '*.py'))
     for path in paths:
-        source, event, filename = path.split('/')
+        source, event = path.split(os.path.sep)[-3:-1]
 
         py_source = open(path).read()
         code = compile(py_source, path, 'exec')
@@ -32,6 +35,7 @@ def main():
     loop.run()
 
 if __name__ == '__main__':
-    logging.basicConfig(level=0, filename='dbus_events.log')
+    logfile = os.path.join(here, 'dbus_events.log')
+    logging.basicConfig(level=0, filename=logfile)
     logging.getLogger().setLevel(0)
     main()
