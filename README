@@ -1,0 +1,21 @@
+dbus-events
+===========
+
+Python daemon for handling DBus signals.
+
+Requirements
+------------
+
+You'll need the daemon Python package (as well as python-dbus of course.)
+
+Usage
+-----
+
+Place signal callbacks in Python modules named <source>/<signal>/<callback>.py,
+where <source> and <signal> specify the DBus source and signal to connect to,
+and <callback> is any filename describing the intent of each callback.  Inside
+each module should be a function name callback, which will be called each time
+the signal is raised.
+
+For example the callback from org.gnome.ScreenSaver/ActiveChanged/mytunes.py
+pauses mytunes playback when the Gnome screensaver is activated.
