@@ -29,7 +29,7 @@ def main():
     session_bus = dbus.SessionBus()
     for source, event, callback in load_callbacks():
         session_bus.add_signal_receiver(callback, event, source)
-    
+
     loop = gobject.MainLoop()
     daemonize()
     loop.run()
