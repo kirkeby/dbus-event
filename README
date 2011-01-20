@@ -19,3 +19,9 @@ the signal is raised.
 
 For example the callback from org.gnome.ScreenSaver/ActiveChanged/mytunes.py
 pauses mytunes playback when the Gnome screensaver is activated.
+
+Debugging DBus Signals
+----------------------
+
+Use dbus-monitor to dump DBus events, and determining which events to listen
+to.
