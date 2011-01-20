@@ -2,7 +2,7 @@
 
 import os
 import logging
-from daemon import daemonize
+from daemon import basic_daemonize as daemonize
 from glob import glob
 import gobject
 import dbus
